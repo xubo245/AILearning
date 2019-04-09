@@ -28,7 +28,7 @@ if __name__ =='__main__':
     test_write_to_tfrecords(tfrecords_filename)
     filename_queue = tf.train.string_input_producer([tfrecords_filename], )  # 读入流中
     reader = tf.TFRecordReader()
-    _, serialized_example = reader.read(filename_queue)  # 返回文件名和文件
+    fileName, serialized_example = reader.read(filename_queue)  # 返回文件名和文件
     features = tf.parse_single_example(serialized_example,
                                        features={
                                            'label': tf.FixedLenFeature([], tf.int64),
@@ -41,6 +41,7 @@ if __name__ =='__main__':
     print(image.shape[0])
     print(image.shape[1])
     label = tf.cast(features['label'], tf.int64)
+    print(label)
     with tf.Session() as sess:  # 开始一个会话
         init_op = tf.initialize_all_variables()
         sess.run(init_op)
