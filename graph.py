@@ -14,7 +14,7 @@ def main(argv):
   print("hello")
 
   # 读取表格
-  data = xlrd.open_workbook("/Users/xubo/Desktop/xubo/git/modelarts/developers.xlsx")
+  data = xlrd.open_workbook("developers.xlsx")
 
   # 获取表格的sheets
   table = data.sheets()[0]
